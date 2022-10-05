@@ -4,9 +4,140 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<title>Exam for month-4</title>
 	</head>
 	<body>
+		<nav class="navbar navbar-expand-lg bg-light">
+			<div class="container navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">Tohirjon_Odilov</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNav"
+						aria-controls="navbarNav"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<button type="button" class="btn btn-primary position-relative">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							fill="currentColor"
+							class="bi bi-basket"
+							viewBox="0 0 16 16"
+						>
+							<path
+								d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"
+							/>
+						</svg>
+						<span
+							class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+						>
+							0+
+							<span class="visually-hidden">unread messages</span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="d-flex my-3">
+				<div class="input-group mb-3">
+					<select class="form-select" id="inputGroupSelect02">
+						<option selected hidden>Choose...</option>
+						<option value="up">Up</option>
+						<option value="down">Down</option>
+						<option value="default">Default</option>
+					</select>
+				</div>
+
+				<div class="input-group mb-3">
+					<input
+						id="search"
+						type="text"
+						class="form-control"
+						aria-label="Amount (to the nearest dollar)"
+						placeholder="Enter number ..."
+					/>
+				</div>
+			</div>
+
+			<table class="table table-hover">
+				<thead class="table-dark">
+					<tr class="">
+						<th scope="col">Code</th>
+						<th scope="col">Nomi</th>
+						<th scope="col">Harfli kodi</th>
+						<th scope="col">Qiymati</th>
+						<th scope="col">Yangilangan sana</th>
+						<th scope="col" class="text-center">Bookmark</th>
+					</tr>
+				</thead>
+				<tbody class="tbody"></tbody>
+			</table>
+		</div>
+
+		<!-- *************** * ! TEMPELETE * *************** -->
+
+		<template id="templete">
+			<tr>
+				<th class="data__id" scope="row">1</th>
+				<td class="data__name">Yaponiya iyenasi</td>
+				<td class="data__short-name">JPY</td>
+				<td class="data__price">74.5</td>
+				<td class="data__date">05.10.2022</td>
+				<td class="data__save d-flex justify-content-center align-items-center">
+					<div class="btn btn-primary">
+						<img src="./images/bookmark-fill.svg" alt="" />
+					</div>
+				</td>
+			</tr>
+		</template>
+
+		<!-- *Modal -->
+		<button
+			type="button"
+			class="btn modal-btn d-none"
+			data-bs-toggle="modal"
+			data-bs-target="#exampleModal"
+		></button>
+
+		<div
+			class="modal fade"
+			id="exampleModal"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog">
+				<div
+					class="m-content d-flex justify-content-center align-items-center p-5"
+				>
+					<div class="modal-header d-flex justify-content-between">
+						<h1
+							class="modal-title fs-5 text-danger me-5"
+							id="exampleModalLabel"
+						>
+							Ehtiyot bo'ling imtihon maket!!!
+						</h1>
+						<button
+							type="button"
+							class="btn-close ms-5"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./js/bootstrap.bundle.min.js"></script>
 		<script src="./js/script.js"></script>
 	</body>
 </html>
