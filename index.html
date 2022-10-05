@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/main.css" />
 		<title>Exam for month-4</title>
 	</head>
 	<body>
@@ -37,10 +38,11 @@
 							/>
 						</svg>
 						<span
+							id="count"
 							class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
 						>
 							0+
-							<span class="visually-hidden">unread messages</span>
+							<!-- <span class="visually-hidden">unread messages</span> -->
 						</span>
 					</button>
 				</div>
@@ -83,6 +85,14 @@
 				<tbody class="tbody"></tbody>
 			</table>
 		</div>
+		<div class="img__bg">
+			<img
+				id="spinner"
+				class="spin"
+				src="./images/Spinner-1s-200px.gif"
+				alt=""
+			/>
+		</div>
 
 		<!-- *************** * ! TEMPELETE * *************** -->
 
@@ -94,7 +104,7 @@
 				<td class="data__price">74.5</td>
 				<td class="data__date">05.10.2022</td>
 				<td class="data__save d-flex justify-content-center align-items-center">
-					<div class="btn btn-primary">
+					<div id="btnCount" class="btn btn-primary">
 						<img src="./images/bookmark-fill.svg" alt="" />
 					</div>
 				</td>
@@ -102,13 +112,18 @@
 		</template>
 
 		<!-- *Modal -->
+		<!-- Button trigger modal -->
 		<button
 			type="button"
-			class="btn modal-btn d-none"
+			id="btnModal"
+			class="btn btn-primary d-none"
 			data-bs-toggle="modal"
 			data-bs-target="#exampleModal"
-		></button>
+		>
+			Launch demo modal
+		</button>
 
+		<!-- Modal -->
 		<div
 			class="modal fade"
 			id="exampleModal"
@@ -117,26 +132,32 @@
 			aria-hidden="true"
 		>
 			<div class="modal-dialog">
-				<div
-					class="m-content d-flex justify-content-center align-items-center p-5"
-				>
-					<div class="modal-header d-flex justify-content-between">
-						<h1
-							class="modal-title fs-5 text-danger me-5"
-							id="exampleModalLabel"
-						>
-							Ehtiyot bo'ling imtihon maket!!!
-						</h1>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
 						<button
 							type="button"
-							class="btn-close ms-5"
+							class="btn-close"
 							data-bs-dismiss="modal"
 							aria-label="Close"
 						></button>
 					</div>
+					<div class="text-danger modal-body">
+						Ehtiyot bo'ling imtihon maket!!!
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal"
+						>
+							Close
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
+
 		<script src="./js/bootstrap.bundle.min.js"></script>
 		<script src="./js/script.js"></script>
 	</body>
