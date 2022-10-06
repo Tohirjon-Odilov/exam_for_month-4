@@ -6,24 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./css/bootstrap.min.css" />
 		<link rel="stylesheet" href="./css/main.css" />
+		<link rel="shortcut icon" href="./images/book.svg" type="image/x-icon" />
 		<title>Exam for month-4</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg bg-light">
+		<nav class="navbar position-fixed w-100 navbar-expand-lg bg-light">
 			<div class="container navbar navbar-expand-lg">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="#">Tohirjon_Odilov</a>
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarNav"
-						aria-controls="navbarNav"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span class="navbar-toggler-icon"></span>
-					</button>
 					<button type="button" class="btn btn-primary position-relative">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +31,6 @@
 							id="count"
 							class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
 							>0
-							<!-- <span class="visually-hidden">unread messages</span> -->
-						</span>
 					</button>
 				</div>
 			</div>
@@ -106,7 +94,8 @@
 					<label class="">
 						<input type="checkbox" class="iterator visually-hidden" />
 						<div id="btnCount" class="btn btn-primary">
-							<img src="./images/bookmark-fill.svg" class="heart" alt="" />
+							<img class="img" src="./images/bookmark-fill.svg" class="heart" alt="" />
+							<img src="./images/heart-fill.svg" class="heart-fill d-none" alt="" />
 						</div>
 						<i class="bi bi-heart-fill"></i>
 					</label>
@@ -114,8 +103,7 @@
 			</tr>
 		</template>
 
-		<!-- *Modal -->
-		<!-- Button trigger modal -->
+		<!--* Button trigger modal -->
 		<button
 			type="button"
 			id="btnModal"

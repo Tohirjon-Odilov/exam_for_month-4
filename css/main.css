@@ -9,3 +9,12 @@
 	height: 100vh;
 	background-color: #fff;
 }
+
+.navbar.position-fixed.w-100.navbar-expand-lg.bg-light {
+	z-index: 99;
+	margin-top: -100px;
+}
+
+.d-flex.my-3 {
+	margin-top: 100px !important;
+}

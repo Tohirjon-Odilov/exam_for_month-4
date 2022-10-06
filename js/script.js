@@ -6,8 +6,8 @@ let sortEL = body.querySelector('#inputGroupSelect02')
 let search = body.querySelector('#search')
 let modalBtn = body.querySelector('#btnModal') //! modalni ishga tushirish
 let result = localStorage.getItem('modal') //! local storage'dan ma'lumot olish
-let img__bg = body.querySelector('.img__bg')
-let count = body.querySelector('#count')
+let spinBg = body.querySelector('.img__bg')
+let mainCount = body.querySelector('#count')
 
 //! add local storage
 const localCurrencies = localStorage.getItem("currencies");
@@ -25,46 +25,54 @@ async function getMainData(url) {
     localStorage.setItem("currencies", JSON.stringify(data));
 
     //! spinner
-    !rawData.status ? img__bg.classList.add('img__bg') : img__bg.className = 'd-none'
+    !rawData.status ? spinBg.classList.add('img__bg') : spinBg.className = 'd-none'
   } catch (error) {
-    img__bg.className = 'd-none'
     console.error("Internet bilan aloqa yo'qoldi!" + error);
   }
 }
 getMainData("https://pressa-exem.herokuapp.com/api-49");
+
+//! remove spin
+setTimeout(() => {
+  spinBg.className = 'd-none'
+}, 1000)
 
 //! Create element
 let btnCount, iterator, heart, heartill;
 function createElement(data) {
   let itemElement = template.cloneNode(true)
 
-  itemElement.querySelector("#data__raw")
+  itemElement.querySelector(".data__raw").dataset.id = data.id
   itemElement.querySelector(".data__id").textContent = data.Code
   itemElement.querySelector(".data__name").textContent = data.CcyNm_UZ
   itemElement.querySelector(".data__short-name").textContent = data.Ccy
   itemElement.querySelector(".data__price").textContent = data.Rate
   itemElement.querySelector(".data__date").textContent = data.Date
-  btnCount = itemElement.querySelector("#btnCount")
+  btnCount = itemElement.querySelector("#btnCount").dataset.id2 = data.Code
   iterator = itemElement.querySelector(".iterator")
-
+  img = itemElement.querySelector('.img').setAttribute('id', ('a' + data.id))
   //! bukmark
   iterator.addEventListener('click', (e) => {
     let counter = 0;
     if (e.target.checked) {
-      counter = count.textContent = +count.textContent + 1
+      counter = mainCount.textContent = +mainCount.textContent + 1
+      // btnCount.children[1].className = 'd-none'
     } else {
-      counter = count.textContent = +count.textContent - 1
+      // btnCount.children[1].src = 'none'
+      // console.dir(btnCount.children[1]);
+      counter = mainCount.textContent = +mainCount.textContent - 1
     }
   })
 
   return itemElement
 }
-
 //! render
 function render(renderData) {
   tbody.innerHTML = "";
 
   let listFragment = document.createDocumentFragment();
+
+  console.log(listFragment);
 
   renderData.forEach((currency) => {
     listFragment.append(createElement(currency))
@@ -113,3 +121,11 @@ setTimeout(() => {
   localStorage.setItem('modal', 'Ishladi va nihoyat')
 }, 10000)
 
+////
+tbody.addEventListener('click', (e) => {
+  let element = e.target.dataset.id2
+  console.log(element);
+
+})
+
+// console.log(btnCount);
