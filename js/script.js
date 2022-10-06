@@ -22,6 +22,9 @@ async function getMainData(url) {
     const rawData = await fetch(url);
     const { data } = await rawData.json();
     currencies = data;
+    if (!currencies.length == 0)
+      render(data)
+
     localStorage.setItem("currencies", JSON.stringify(data));
 
     //! spinner
@@ -41,24 +44,11 @@ setTimeout(() => {
 let iterator;
 function createElement(data) {
   let itemElement = template.cloneNode(true)
-
   itemElement.querySelector(".data__id").textContent = data.Code
   itemElement.querySelector(".data__name").textContent = data.CcyNm_UZ
   itemElement.querySelector(".data__short-name").textContent = data.Ccy
   itemElement.querySelector(".data__price").textContent = data.Rate
   itemElement.querySelector(".data__date").textContent = data.Date
-  iterator = itemElement.querySelector(".iterator")
-
-  //! bukmark
-  iterator.addEventListener('click', (e) => {
-    let counter = 0;
-    if (e.target.checked) {
-      counter = mainCount.textContent = +mainCount.textContent + 1
-      tbody.style.textColor = 'red'
-    } else {
-      counter = mainCount.textContent = +mainCount.textContent - 1
-    }
-  })
 
   return itemElement
 }
@@ -81,7 +71,6 @@ let sortArr = [...currencies]
 let defaultt = currencies
 sortEL.addEventListener('change', function (e) {
   let sortValue = e.target.value
-
   switch (sortValue) {
     case 'down':
       sortArr.sort((a, b) => a.Rate - b.Rate);
@@ -114,3 +103,16 @@ setTimeout(() => {
     modalBtn.click()
   localStorage.setItem('modal', 'Ishladi va nihoyat')
 }, 10000)
+
+//! bukmark
+tbody.addEventListener('click', (e) => {
+  if (e.target.matches(".btn")) {
+    if (e.target.src.includes('bookmark')) {
+      mainCount.textContent++
+      e.target.src = "../images/heart-fill.svg"
+    } else {
+      mainCount.textContent--
+      e.target.src = "../images/bookmark-fill.svg"
+    }
+  }
+})
