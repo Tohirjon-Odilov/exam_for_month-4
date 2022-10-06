@@ -5,7 +5,7 @@ let tbody = body.querySelector('.tbody')
 let sortEL = body.querySelector('#inputGroupSelect02')
 let search = body.querySelector('#search')
 let modalBtn = body.querySelector('#btnModal') //! modalni ishga tushirish
-let result = localStorage.getItem('modal') //! local storage'dan ma'lumot olish
+let modalGetResult = localStorage.getItem('modal') //! local storage'dan ma'lumot olish
 let spinBg = body.querySelector('.img__bg')
 let mainCount = body.querySelector('#count')
 
@@ -38,28 +38,24 @@ setTimeout(() => {
 }, 1000)
 
 //! Create element
-let btnCount, iterator, heart, heartill;
+let iterator;
 function createElement(data) {
   let itemElement = template.cloneNode(true)
 
-  itemElement.querySelector(".data__raw").dataset.id = data.id
   itemElement.querySelector(".data__id").textContent = data.Code
   itemElement.querySelector(".data__name").textContent = data.CcyNm_UZ
   itemElement.querySelector(".data__short-name").textContent = data.Ccy
   itemElement.querySelector(".data__price").textContent = data.Rate
   itemElement.querySelector(".data__date").textContent = data.Date
-  btnCount = itemElement.querySelector("#btnCount").dataset.id2 = data.Code
   iterator = itemElement.querySelector(".iterator")
-  img = itemElement.querySelector('.img').setAttribute('id', ('a' + data.id))
+
   //! bukmark
   iterator.addEventListener('click', (e) => {
     let counter = 0;
     if (e.target.checked) {
       counter = mainCount.textContent = +mainCount.textContent + 1
-      // btnCount.children[1].className = 'd-none'
+      tbody.style.textColor = 'red'
     } else {
-      // btnCount.children[1].src = 'none'
-      // console.dir(btnCount.children[1]);
       counter = mainCount.textContent = +mainCount.textContent - 1
     }
   })
@@ -71,8 +67,6 @@ function render(renderData) {
   tbody.innerHTML = "";
 
   let listFragment = document.createDocumentFragment();
-
-  console.log(listFragment);
 
   renderData.forEach((currency) => {
     listFragment.append(createElement(currency))
@@ -116,16 +110,7 @@ search.addEventListener('input', (e) => {
 
 //! modal
 setTimeout(() => {
-  if (!result)
+  if (!modalGetResult)
     modalBtn.click()
   localStorage.setItem('modal', 'Ishladi va nihoyat')
 }, 10000)
-
-////
-tbody.addEventListener('click', (e) => {
-  let element = e.target.dataset.id2
-  console.log(element);
-
-})
-
-// console.log(btnCount);
