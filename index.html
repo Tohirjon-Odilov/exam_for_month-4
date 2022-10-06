@@ -40,8 +40,7 @@
 						<span
 							id="count"
 							class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-						>
-							0+
+							>0
 							<!-- <span class="visually-hidden">unread messages</span> -->
 						</span>
 					</button>
@@ -97,16 +96,20 @@
 		<!-- *************** * ! TEMPELETE * *************** -->
 
 		<template id="templete">
-			<tr>
+			<tr class="data__raw">
 				<th class="data__id" scope="row">1</th>
 				<td class="data__name">Yaponiya iyenasi</td>
 				<td class="data__short-name">JPY</td>
 				<td class="data__price">74.5</td>
 				<td class="data__date">05.10.2022</td>
 				<td class="data__save d-flex justify-content-center align-items-center">
-					<div id="btnCount" class="btn btn-primary">
-						<img src="./images/bookmark-fill.svg" alt="" />
-					</div>
+					<label class="">
+						<input type="checkbox" class="iterator visually-hidden" />
+						<div id="btnCount" class="btn btn-primary">
+							<img src="./images/bookmark-fill.svg" class="heart" alt="" />
+						</div>
+						<i class="bi bi-heart-fill"></i>
+					</label>
 				</td>
 			</tr>
 		</template>

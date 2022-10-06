@@ -10,7 +10,6 @@ let img__bg = body.querySelector('.img__bg')
 let count = body.querySelector('#count')
 
 //! add local storage
-// localStorage.removeItem("currencies")
 const localCurrencies = localStorage.getItem("currencies");
 let currencies = [];
 
@@ -26,25 +25,37 @@ async function getMainData(url) {
     localStorage.setItem("currencies", JSON.stringify(data));
 
     //! spinner
-    !rawData.status ? img__bg.classList.toggle('img__btn') : img__bg.className = 'd-none'
+    !rawData.status ? img__bg.classList.add('img__bg') : img__bg.className = 'd-none'
   } catch (error) {
+    img__bg.className = 'd-none'
     console.error("Internet bilan aloqa yo'qoldi!" + error);
   }
 }
 getMainData("https://pressa-exem.herokuapp.com/api-49");
 
 //! Create element
-let btnCount;
+let btnCount, iterator, heart, heartill;
 function createElement(data) {
   let itemElement = template.cloneNode(true)
 
+  itemElement.querySelector("#data__raw")
   itemElement.querySelector(".data__id").textContent = data.Code
   itemElement.querySelector(".data__name").textContent = data.CcyNm_UZ
   itemElement.querySelector(".data__short-name").textContent = data.Ccy
   itemElement.querySelector(".data__price").textContent = data.Rate
   itemElement.querySelector(".data__date").textContent = data.Date
   btnCount = itemElement.querySelector("#btnCount")
+  iterator = itemElement.querySelector(".iterator")
 
+  //! bukmark
+  iterator.addEventListener('click', (e) => {
+    let counter = 0;
+    if (e.target.checked) {
+      counter = count.textContent = +count.textContent + 1
+    } else {
+      counter = count.textContent = +count.textContent - 1
+    }
+  })
 
   return itemElement
 }
@@ -102,11 +113,3 @@ setTimeout(() => {
   localStorage.setItem('modal', 'Ishladi va nihoyat')
 }, 10000)
 
-//! bukmark
-btnCount.addEventListener('click', (e) => {
-  console.log(e.target.parentNode)
-
-  if (count >= 0) {
-    count.textContent++
-  }
-})
